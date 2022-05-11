@@ -54,3 +54,22 @@ const imagens = [
     }
   ];
 
+const btn_anterior = document.querySelector("#anterior");
+const btn_proximo = document.querySelector("#proximo");
+const imagem = document.querySelector("#slide");
+
+btn_anterior.addEventListener("click",function(){
+  let img = imagens.pop();//retira o ultimo elemento
+  imagens.unshift(img);   //adiciona o ultimo elemento no inicio
+
+  imagem.src = servidorDasImagens + "/" + imagens[0].arquivo;
+  imagem.alt = imagens[0].descricao;
+});
+
+btn_proximo.addEventListener("click",function(){
+  let img = imagens.shift();//retira o ultimo elemento
+  imagens.push(img);   //adiciona o ultimo elemento no inicio
+
+  imagem.src = servidorDasImagens + "/" + imagens[0].arquivo;
+  imagem.alt = imagens[0].descricao;
+});
